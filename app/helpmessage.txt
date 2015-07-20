@@ -1,0 +1,8 @@
+  intronode:
+  v1.0.0
+  
+  usage:
+  
+  --help              print this message
+  --name={name}       input name
+  
