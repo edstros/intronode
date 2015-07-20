@@ -1,0 +1,23 @@
+{
+  "name": "intronode",
+  "version": "1.0.0",
+  "description": "Intro to Node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edstros/intronode.git"
+  },
+  "author": "Edwin Acevedo (edwin.a.acevedo@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edstros/intronode/issues"
+  },
+  "homepage": "https://github.com/edstros/intronode#readme",
+  "dependencies": {
+    "prompt": "^0.2.14",
+    "yargs": "^3.15.0"
+  }
+}
