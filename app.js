@@ -4,14 +4,19 @@ var fs = require('fs'); //file system, needs to be required. part of node but no
 var argv = require('yargs').argv; //takes what's inthe yargs object and apply the argv property
 //can also do it this way: var name = argv.name || "World";
 var prompt = require('prompt');
-var help = require('./app/help')
+var help = require('./app/help');
+var zipFile = require ('./app/zipFile');
+//var csv = require ('./app/csvToJson');
+
 if (argv.help) {
   help();//all was extractedto help.js
 }
-/*if (argv.name) {
-  printHelloMessage(argv.name)
-} else {*/
-
+if (argv.file) {
+  zipFile(argv.file);//if someone wants to compress a file
+}
+if (argv.csv) {
+  csvToJson(argv.csv);
+}
 prompt.override = argv;
 prompt.message = prompt.delimeter = '';
 prompt.start();
@@ -26,19 +31,16 @@ function printHelloMessage(name) {
     var options = {
       encoding: 'utf8'
     };
-    var contents = fs.createReadStream('./app/bigfile', options);
+    var stream = fs.createReadStream('./app/helpmessage.txt', options);// can call any file as long as there is a path
     //need ./app/ because node read from where you are
     //running node from, not from where the file sits
-    console.log(contents);
+  stream.pipe(process.stdout);
+  //console.log(contents);
     // process.stdout.write(message);
 
   process.stdout.write('Hello ' + name + ' Again!\n'); //more direct way to write to the console;
 
-
-  //does not write new line by default
- /* process.stderr.write('OMG HELP!\n'); //standard error to console
-  console.error('Help me!');
-  process.exit(1); //responds to error properly and not continue a chain
-  console.log(process.argv); //makes the array in the console
-  console.log(argv); //this is the yargs*/
 }
+//create a readstream
+//pipe to module
+//convert to json
